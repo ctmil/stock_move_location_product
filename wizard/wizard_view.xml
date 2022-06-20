@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+        <record id="stock_move_location_product_lot" model="ir.ui.view">
+            <field name="name">wiz.stock.move.location.form.stock_move_location.product</field>
+            <field name="model">wiz.stock.move.location</field>
+            <field name="inherit_id" ref="stock_move_location.view_wiz_stock_move_location_form_stock_move_location" />
+	    <field name="arch" type="xml">
+		<xpath expr="//group[@name='lines']" position="before">
+			<group>
+				<field name="product_id" />
+				<field name="tracking" invisible="1" />
+				<field name="lot_id" attrs="{'invisible': [('tracking','=','none')]}"
+					domain="[('product_id','=',product_id)]"
+					/>
+			</group>
+		</xpath>
+	    </field>
+	</record>
+
+     </data>
+</odoo>
